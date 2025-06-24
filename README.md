@@ -76,7 +76,33 @@ require("supermaven-nvim").setup({
 
 This will disable supermaven-nvim for files with the name `foo.sh` in it, e.g. `myscriptfoo.sh`.
 
-### Using with nvim-cmp
+### Using with [blink.cmp](https://github.com/Saghen/blink.cmp)
+
+[blink-cmp-supermaven](https://github.com/Huijiro/blink-cmp-supermaven) is a compatibility plugin to make Supermaven compatible with blink.cmp.
+
+```lua
+{
+    "saghen/blink.cmp",
+    dependencies = {
+        "huijiro/blink-cmp-supermaven",
+    },
+    opts = {
+        sources = {
+            default = { "lsp", 'path', "supermaven", "snippets", 'buffer' },
+            providers = {
+                supermaven = {
+                    kind = "Supermaven",
+                    module = "blink-cmp-supermaven",
+                    score_offset = 100,
+                    async = true,
+                },
+            },
+        },
+    },
+}
+```
+
+### Using with [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 
 If you are using nvim-cmp, you can use the `supermaven` source (which is registered by default) by adding the following to your `cmp.setup()` function:
 
